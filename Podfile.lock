@@ -1,0 +1,13 @@
+PODS:
+  - FRDLivelyButton (1.1.2)
+  - GPUImage (0.1.3)
+
+DEPENDENCIES:
+  - FRDLivelyButton (~> 1.1.2)
+  - GPUImage
+
+SPEC CHECKSUMS:
+  FRDLivelyButton: ef29e27fa81a9a434412d1f3b266a2736349663b
+  GPUImage: efcc16efc1fc45c8f2fdc50591f3505d100789de
+
+COCOAPODS: 0.29.0
