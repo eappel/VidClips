@@ -283,7 +283,7 @@
     [self.viewer setPlayer:compositionPlayer];
     [self.view insertSubview:self.viewer atIndex:0];
     [self.viewer.player play];
-    NSLog(@"INITIAL VIEWER ADDED");
+    NSLog(@"PLAYING INITIAL COMPOSITION");
     
 
 //    EXPORT PLAIN COMPOSITION TO |self.compsitionURL|
@@ -351,7 +351,6 @@
         [_filter removeTarget:_writer];
 //        [movieFile removeTarget:filter]; //necessary?
         [_writer finishRecordingWithCompletionHandler:^{
-            NSLog(@"done recording filter %i", type);
             [_controller.writerProgressObject setValue:[NSNumber numberWithInt:GPUImageMovieWriterStatusFinished] forKey:key];
 //            [_controller.pageViewController.view setUserInteractionEnabled:YES];
         }];
@@ -422,7 +421,7 @@
 - (NSURL *) setUpURLWithDescription:(NSString *)description {
     // Assemble a unique file URL for either a composition or export
     NSString *fileName = [NSString stringWithFormat:@"%@%i.mov", description, self.exportCount];
-    NSLog(@"==========Video for current CapSesh will be written into:==================%@================", fileName);
+    NSLog(@"==========Video for current file will be written into:==================%@================", fileName);
     NSError* error = nil;
     NSURL *returnURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:fileName];
     
@@ -449,10 +448,10 @@
 - (BOOL) checkURLOccupied:(NSURL *)url {
     // CHECK IF THERE IS ALREADY A FILE WRITTEN INTO THE URL
     if([[NSFileManager defaultManager] fileExistsAtPath:url.path]){
-        NSLog(@"File already exists at %@", url.path);
+//        NSLog(@"File already exists at %@", url.path);
         return YES;
     }
-    NSLog(@"File unoccupied at %@", url.path);
+//    NSLog(@"File unoccupied at %@", url.path);
     return NO;
 }
 
@@ -469,7 +468,6 @@
 {
 //    NOTE --- SAVING URLS AS STRINGS.  WHEN LOADING, MUST RECREATE NSURL USING URLWITHSTRING()
     NSMutableArray *savedVideosArray = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"savedExports"]];  //get current array of urls from usr defs
-    NSLog(@"Before Saving URL, video Count is: %lu", (unsigned long)savedVideosArray.count);
     [savedVideosArray addObject:[url absoluteString]];
     [[NSUserDefaults standardUserDefaults] setObject:savedVideosArray forKey:@"savedExports"];
     return [[NSUserDefaults standardUserDefaults] synchronize];

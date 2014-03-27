@@ -86,7 +86,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"did appear");
     if (self.index!=0) {
         [self.view addSubview:self.activityIndicatorView];
         [self.activityIndicatorView startAnimating];

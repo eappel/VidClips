@@ -197,6 +197,7 @@
 
 - (void)saveVideoToCameraRoll:(UIButton *) sender
 {
+    NSLog(@"Save Button Pressed");
     [self buttonReScale:sender];
 	ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
 	[library writeVideoAtPathToSavedPhotosAlbum:self.videoURL
@@ -223,6 +224,7 @@
 
 - (void)emailButtonPressed:(UIButton *)sender
 {
+    NSLog(@"Email Button Pressed");
     [self buttonReScale:sender];
 
     //initialize the mail compose view controller
@@ -248,6 +250,7 @@
 
 - (void)messageButtonPressed:(UIButton *)sender
 {
+    NSLog(@"Message Button Pressed");
     [self buttonReScale:sender];
 
     if(![MFMessageComposeViewController canSendText]) {

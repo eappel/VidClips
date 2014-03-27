@@ -288,7 +288,7 @@
 {
 	if ( self.assetWriter.status == AVAssetWriterStatusUnknown ) {
         if ([self.assetWriter startWriting]) {
-            NSLog(@"SUCESSFULLY WRITING");
+//            NSLog(@"SUCCESSFULLY WRITING");
 			CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
             [self.assetWriter startSessionAtSourceTime:startTime];
 		}
@@ -298,22 +298,20 @@
 	}
 	
 	if ( self.assetWriter.status == AVAssetWriterStatusWriting ) {
-        NSLog(@"about to write video");
+//        NSLog(@"about to write video");
 		if (mediaType == AVMediaTypeVideo) {
 			if (self.assetWriterVideoInput.isReadyForMoreMediaData) {
 				if (![self.assetWriterVideoInput appendSampleBuffer:sampleBuffer]) {
                     NSLog(@"vidfailed with: %@", [self.assetWriter error]);
 				}
-                NSLog(@"wrote video");
 			}
 		}
 		else if (mediaType == AVMediaTypeAudio) {
-            NSLog(@"about to write audio");
+//            NSLog(@"about to write audio");
 			if (self.assetWriterAudioInput.isReadyForMoreMediaData) {
 				if (![self.assetWriterAudioInput appendSampleBuffer:sampleBuffer]) {
                     NSLog(@"audfailed with: %@", [self.assetWriter error]);
 				}
-                NSLog(@"wrote video");
 			}
 		}
 	}
@@ -359,6 +357,7 @@
         }
         if (self.recordingState == RecordingStateRecording && self.assetWriter) {
 //            NSLog(@"writing, %@, assetWriter status = %i", connection, (int)self.assetWriter.status);
+            NSLog(@"writing");
 
             CMFormatDescriptionRef formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer);
             CFRetain(sampleBuffer); //needs to be retained otherwise it will be released before being written, since dispatch_async returns immediately
@@ -610,7 +609,6 @@
 - (void) stopRecording
 {
     NSLog(@"STOP RECORDING");
-    NSLog(@"current point is: %f", self.currentPoint);
 	dispatch_async(self.assetWritingQueue, ^{
         //finish asset writing
         [self.assetWriter finishWritingWithCompletionHandler:^{
@@ -623,7 +621,7 @@
             [self.fileURLs addObject:temp];
             NSDictionary *optionsDictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
             AVURLAsset *fileAsset = [AVURLAsset URLAssetWithURL:temp options:optionsDictionary];
-            NSLog(@"ftracks: %@", fileAsset.tracks);
+            NSLog(@"media tracks are: %@", fileAsset.tracks);
         }];
 	});
 }

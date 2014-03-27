@@ -72,7 +72,6 @@
     [self.recordButton setStyle:kFRDLivelyButtonStyleCirclePlus animated:YES];
     
     self.rowCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"rowCount"];
-    NSLog(@"rowCount = %d", self.rowCount);
     
     [self.tableView reloadData];
     if (self.rowCount == 0) {
@@ -95,7 +94,7 @@
 
 - (void) refresh:(UIRefreshControl *) sender {
     self.rowCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"rowCount"];
-    NSLog(@"rowCount = %d", self.rowCount);
+    NSLog(@"tableview refreshed");
     [self.tableView reloadInputViews];
     [self.tableView reloadData];
     [sender endRefreshing];
