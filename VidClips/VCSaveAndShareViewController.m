@@ -46,12 +46,11 @@
 {
     self = [super init];
     if(self) {
-        NSLog(@"_init: %@", self);
         if (fileURL == nil) {
             NSLog(@"ERROR -- No file url to fetch video");
         }
         else {
-            NSLog(@"ASSET ARRAY NON EMPTY");
+            NSLog(@"Initializing video");
             self.videoURL = fileURL;
             NSLog(@"Video URL loaded as: %@", [self.videoURL absoluteString]);
         }
