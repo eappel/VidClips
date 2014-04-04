@@ -14,7 +14,7 @@ This project uses cocoa pods, so make sure to build from the workspace file, not
 ###[VCAppDelegate](https://github.com/eappel/VidClips/blob/master/VidClips/VCAppDelegate.m)
 The app delegate creates the navigation controller and sets up its view controller hierarchy.
 
-###[VCNavigationController](https://github.com/eappel/VidClips/blob/master/VidClips/VCNavigationViewController.m)
+###[VCNavigationController](https://github.com/eappel/VidClips/blob/master/VidClips/VCNavigationController.m)
 This UINavigationController subclass enables customization of the navigation buttons to work with [FRDLivelyButton](https://github.com/sebastienwindal/FRDLivelyButton).  In `viewDidLoad`, two buttons (leftButton & rightButton) are initialized and added to the view.  The child view controllers then use the `leftButton` and `rightButton` properties of VCNavigationController to dynamically set the button styles. The one drawback to this method is that it limits the button appearance to the built-in button styles of the library.
 
 ###[VCGalleryViewController](https://github.com/eappel/VidClips/blob/master/VidClips/VCGalleryViewController.m)
