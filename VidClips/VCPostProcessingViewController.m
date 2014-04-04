@@ -108,6 +108,7 @@
     }
     
     [self createCompositionWithAssets:self.assets];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
