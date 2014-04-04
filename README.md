@@ -31,7 +31,7 @@ This ViewController handles filtering and saving videos.  A `UIPageViewControlle
   
 Each new filter is saved to a unique file so we only need to process the original video one time per filter. These files are saved so long as the user stays on the processing screen. So in the worst case scenario, if the user swipes through all 15 filters, VidClips will have 16 variations of the movie file (including the non-filtered version) stored in memory. When the user cancels or saves the video, these files are cleared from memory in `viewWillDissapear`.
 
-##BUGS
+##BUGS <a name=“bugs”></a>
 
 01. Filter Freezing — This bug occurs in VCPostProcessingViewController when the GPUImageWriter freezes and doesn’t finish processing a filtered video.  This bug can be identified when the console logs a bunch of lines in the format - "Current frame time : 7.265985 ms" - that are not followed by “GPUImageMovieWriter Finished Writing”. A couple of factors can contribute to this bug including swiping the PageViewController too fast and recording longer videos. I’ve spent a couple hours trying to figure out how to prevent this and as far as I can tell, it’s a bug within the GPUImage framework. However, it's entirely possible that there is a threading issue on my end. The app breaks when this bug occurs because it relies on the completion handler of the assetWriter (called `movieWriter` in the file) to change the asset writing status. So, if the assetWriter never finishes writing, the completion block is never executed, resulting in filters never get played.  Canceling the video and re-recording should fix this.  To minimize the likelihood of running into this bug, record shorter videos and don’t try changing the filters too quickly.
 
