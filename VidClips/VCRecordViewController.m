@@ -136,7 +136,7 @@
     //CREATE CAPTURE SESSION AND SET PRESET
     self.captureSession = [[AVCaptureSession alloc] init];
     if (![self.captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]) {
-        if (![self.captureSession canSetSessionPreset:AVCaptureSessionPresetMedium]) {
+        if (![self.captureSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
             [self.captureSession setSessionPreset:AVCaptureSessionPresetLow];
         }
         else {
@@ -317,7 +317,7 @@
 	}
 }
 
-- (void)processPixelBuffer: (CVImageBufferRef)pixelBuffer
+- (void)processPixelBuffer: (CVImageBufferRef)pixelBuffer //UNUSED
 {
     //Can use this method to filter video as it is being processed
     CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
