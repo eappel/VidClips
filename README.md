@@ -1,6 +1,6 @@
 # README
 
-This is my final project for CS 2049 - Intermediate iOS Development.  It was built in a week and a half so it is still pretty fragile.  For a list of known bugs, [see below](README.md#bugs). 
+This is my final project for CS 2049 - Intermediate iOS Development.  It was built in a week and a half so it is still pretty fragile.  For a list of known bugs, [see below](#bugs). 
 
 ##RUNNING THE PROJECT
 This project uses cocoa pods, so make sure to build from the workspace file, not the xcodeproj.  
