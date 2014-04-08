@@ -522,7 +522,7 @@
     }
 }
 
--(void)updateTimer
+-(void)updateTime
 {
 //    NSLog(@"update time");
     [self startAnimation];
