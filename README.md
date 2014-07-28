@@ -10,7 +10,7 @@ This project uses cocoa pods, so make sure to build from the workspace file, not
 [GPUImage](https://github.com/BradLarson/GPUImage) to filter recorded videos in post-processing.  
 [FRDLivelyButton](https://github.com/sebastienwindal/FRDLivelyButton) to animate navigation buttons between views.
 
-##DESIGN
+##ARCHITECTURE
 
 ###[VCAppDelegate](https://github.com/eappel/VidClips/blob/master/VidClips/VCAppDelegate.h)
 The app delegate creates the navigation controller and sets up its view controller hierarchy.

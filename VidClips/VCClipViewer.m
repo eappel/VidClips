@@ -13,13 +13,14 @@
 + (Class)layerClass {
     return [AVPlayerLayer class];
 }
-- (AVPlayer*)player {
+- (AVPlayer *)player {
     return [(AVPlayerLayer *)[self layer] player];
 }
 - (void)setPlayer:(AVPlayer *)player {
     [(AVPlayerLayer *)[self layer] setPlayer:player];
 }
 @end
+
 //
 //- (id)initWithFrame:(CGRect)frame
 //{
